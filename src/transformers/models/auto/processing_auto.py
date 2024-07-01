@@ -12,7 +12,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-""" AutoProcessor class."""
+"""AutoProcessor class."""
+
 import importlib
 import inspect
 import json
@@ -63,10 +64,12 @@ PROCESSOR_MAPPING_NAMES = OrderedDict(
         ("idefics", "IdeficsProcessor"),
         ("idefics2", "Idefics2Processor"),
         ("instructblip", "InstructBlipProcessor"),
+        ("instructblipvideo", "InstructBlipVideoProcessor"),
         ("kosmos-2", "Kosmos2Processor"),
         ("layoutlmv2", "LayoutLMv2Processor"),
         ("layoutlmv3", "LayoutLMv3Processor"),
         ("llava", "LlavaProcessor"),
+        ("llava-next-video", "LlavaNextVideoProcessor"),
         ("llava_next", "LlavaNextProcessor"),
         ("markuplm", "MarkupLMProcessor"),
         ("mctct", "MCTCTProcessor"),
@@ -74,6 +77,7 @@ PROCESSOR_MAPPING_NAMES = OrderedDict(
         ("oneformer", "OneFormerProcessor"),
         ("owlv2", "Owlv2Processor"),
         ("owlvit", "OwlViTProcessor"),
+        ("paligemma", "PaliGemmaProcessor"),
         ("pix2struct", "Pix2StructProcessor"),
         ("pop2piano", "Pop2PianoProcessor"),
         ("sam", "SamProcessor"),
@@ -89,6 +93,7 @@ PROCESSOR_MAPPING_NAMES = OrderedDict(
         ("tvp", "TvpProcessor"),
         ("unispeech", "Wav2Vec2Processor"),
         ("unispeech-sat", "Wav2Vec2Processor"),
+        ("video_llava", "VideoLlavaProcessor"),
         ("vilt", "ViltProcessor"),
         ("vipllava", "LlavaProcessor"),
         ("vision-text-dual-encoder", "VisionTextDualEncoderProcessor"),
@@ -167,9 +172,9 @@ class AutoProcessor:
             force_download (`bool`, *optional*, defaults to `False`):
                 Whether or not to force to (re-)download the feature extractor files and override the cached versions
                 if they exist.
-            resume_download (`bool`, *optional*, defaults to `False`):
-                Whether or not to delete incompletely received file. Attempts to resume the download if such a file
-                exists.
+            resume_download:
+                Deprecated and ignored. All downloads are now resumed by default when possible.
+                Will be removed in v5 of Transformers.
             proxies (`Dict[str, str]`, *optional*):
                 A dictionary of proxy servers to use by protocol or endpoint, e.g., `{'http': 'foo.bar:3128',
                 'http://hostname': 'foo.bar:4012'}.` The proxies are used on each request.
